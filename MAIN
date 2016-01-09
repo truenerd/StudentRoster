@@ -1,0 +1,42 @@
+
+/**
+ * Runs Student / Roster Classes.
+ */
+
+ public class MAIN
+ { 
+     public static void main(String[] args) 
+     { 
+         
+         /**Enters the Student Class and calls the print() method
+          * to print studentID, Firstname and LastName of all students in the Roster Class
+          */
+         Student.print();{}
+         /**Iterates through the student string, adds them to an arraylist
+          * then prints out the entire list per student
+          */
+          Roster.add();{}
+         /**Iterates through the student Arraylist prints the student ID 
+           * and the average of that student's grades.
+           */ 
+         Roster.printAvgGrade();{}
+          
+          /**Iterates through the student Arraylist reviewing the email addresses to ensure 
+          *they meet criteria then prints out any email address that is incorrecct.
+          */
+          Roster.print_Invalid_Emails();{}
+          /**Iterates thru array to list all student informtion
+          */
+          Roster.print_All();
+          /**Iterates through the student arrayList to find the student ID that the user
+           * wants to remove and removes it from the array.
+           */
+          Roster.remove("3");
+          /**Control test that Iterates through the student arrayList to find the student ID 
+           * that the user already removed and prints a message that the student file no
+           * longer exists.
+           */
+          Roster.remove("3");
+     } 
+ } 
+
