@@ -1,0 +1,91 @@
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+/** * Description of class Student.
+ * Build Student Class Constructor of all Student elements
+ * Create Setters and Getters from the constructor.
+ * @author (Djuana Donaldson) 
+ * @version (1_5_16)
+ */
+public class Student
+{
+      // instance variables - of all items in Roster
+    private String studentId;
+    private String firstName;
+    private String lastName;
+    private String emailAddy;
+    private int age;
+    private int[] grades;
+
+   Student(String studentId, String firstName, String lastName, String emailAddy, int age, int[] grades)
+   {
+       this.studentId = studentId;
+       this.firstName = firstName;
+       this.lastName = lastName;
+       this.emailAddy = emailAddy;
+       this.age = age;
+       this.grades = grades;      
+   }
+   public String getID()
+   {
+       return this.studentId;
+   }
+   public void setID(String ID)
+   {
+       this.studentId = ID;
+   }
+   public String getfirstName()
+   {
+       return this.firstName;
+   }
+   public void setfirstName(String firstName)
+   {
+       this.firstName = firstName;
+   }
+   public String getlastName()
+   {
+       return this.lastName;
+   }
+   public void setlastName(String lastName)
+   {
+       this.lastName = lastName;
+   }
+   public String getemailAddy()
+   {
+       return this.emailAddy;
+   }
+   public void setemailAddy(String emailAddy)
+   {
+       this.emailAddy = emailAddy;
+   }
+   public int getAge()
+   {
+       return this.age;
+   }
+   public void setAge(int age)
+   {
+       this.age = age;
+   }
+   public int [] getGrades()
+   {
+       return this.grades;
+   }
+   public void setGrades(int[] grades)
+   {
+       this.grades = grades;
+   }
+   public static void print() 
+   {
+       for(int s = 0 ; s < Roster.stdArray.size(); s++)
+       {
+            Student x = Roster.stdArray.get(s);
+            System.out.println("StudentId = " + x.getID());
+            System.out.println("Name = " + x.getfirstName() + " " + x.getlastName());
+            System.out.println("Email =  " + x.getemailAddy());
+       }
+   }
+}
+
+
+
