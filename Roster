@@ -1,0 +1,165 @@
+import java.util.ArrayList;
+
+/**
+ * Description of class Roster.
+ * Does all the work for Student Class.
+ * @author (DJ Donaldson) 
+ * @version (1_5_16)
+ */
+public class Roster 
+{
+   public static ArrayList<Student> stdArray = new ArrayList<>(); 
+   
+   public static void add()
+   {
+      
+       String[] students= {"1,John,Smith,john1989@gmail.com,20,88,79,59",
+        "2,Suzan,Erickson,erickson_1990@gmail.com,19,91,72,85",
+        "3,Jack,Napoli,the_lawyer99yahoo.com,19,85,84,87",
+        "4,Erin,Black,erin.black@comcast.net,22,91,98,82",
+        "5,DJ,nerd,nerd@truenerd.geek,50,85,85,85"};  
+      
+       String delims = "[,]";
+       
+       for(int s = 0 ; s < students.length; s++)
+       {
+           String [] str = students[s].split(delims);
+           int age = Integer.parseInt(str[4]);
+           int[] arrayGrades = new int[3];
+           arrayGrades[0] = Integer.parseInt(str[5]);
+           arrayGrades[1] = Integer.parseInt(str[6]);
+           arrayGrades[2] = Integer.parseInt(str[7]);
+           
+           Student std = new Student (str[0],str[1],str[2],str[3],age,arrayGrades);
+           
+           stdArray.add(std);
+           
+        }
+       for(int s = 0 ; s < stdArray.size(); s++)
+       {
+            Student x = stdArray.get(s);
+            System.out.println("StudentId = " + x.getID());
+            System.out.println("Name = " + x.getfirstName() + " " + x.getlastName());
+            System.out.println("Email =  " + x.getemailAddy());
+            System.out.println("Age = " + x.getAge());
+            int [] grades = x.getGrades();
+            System.out.println("Grades = " + grades[0] + ", " + grades[1] + ", " + grades[2]);
+            
+       }
+    }
+      
+   /**removes a student record by ID number
+     */
+    public static void remove(String studentID)
+    {
+        
+   
+        Student stud = null;
+        
+        for (int i = 0; i < stdArray.size(); i++ ) 
+        {
+            stud = stdArray.get(i);
+            
+            if (stud.getID().equals(studentID)) 
+            {
+                stdArray.remove(i);
+                System.out.println("Student ID: " + studentID + "  has been removed.");
+                
+            }
+            else 
+            {
+                stud = null;
+            }
+           
+        }
+         /**if student ID doesn't exist print so.
+            */ 
+        if (stud == null) 
+            {
+                System.out.println("Student with ID: " + studentID + " could not be found");
+            }
+    }
+   
+   /**Prints student's ID and grade point avg
+     *
+     */
+    public static void printAvgGrade()
+    {
+        
+            for (int i = 0; i < stdArray.size(); i++) 
+            {
+                Student stude = stdArray.get(i);
+                
+                System.out.println("Student ID is " + ((i)+ 1));
+                
+            
+                /**if (stude.getID().equals(studentID)) */
+                
+                    int grades[] = stude.getGrades();
+                    
+                    int sum = 0;
+                    
+                    for (int j = 0; j < grades.length; j++) 
+                    {
+                        sum += grades[j];  
+                    }
+                   int  AVG = sum / grades.length;
+                   
+                   System.out.println("The student Average for this student is : " + AVG);
+                  
+            }
+        
+    }    
+
+    /**print a message that the email address entered is invalid
+     * and displays the email addy
+     */
+    public static void print_Invalid_Emails()
+    {
+        if (!stdArray.isEmpty()) 
+        {            
+           for (Student stu : stdArray)             
+            {
+                boolean foundPeriod = false;
+                boolean foundAtSymbol = false;
+                boolean foundSpace = false;
+                
+             
+                String email = stu.getemailAddy();
+                                
+                if (email.contains("@")) 
+                {
+                    foundAtSymbol= true;
+                }
+                if (email.contains(".")) 
+                {
+                    foundPeriod = true;
+                }
+                if (email.contains(" ")) 
+                {
+                    foundSpace = true;
+                }
+                
+                boolean valid = foundAtSymbol && foundPeriod && !foundSpace;
+                 
+                if ( !valid) 
+                {
+                    System.out.println("The eamil address:  "+ email + "  is incorrect,\n please correct the student file.");
+                   
+                  
+                }
+            }
+        }
+    }    
+    public static void print_All()
+    {
+       for(int s = 0 ; s < stdArray.size(); s++)
+       {
+            Student x = stdArray.get(s);
+            System.out.print("StudentId = " + x.getID());
+            System.out.print("  Name = " + x.getfirstName() + " " + x.getlastName());
+            System.out.print("  Email =  " + x.getemailAddy());
+            System.out.println();
+       }
+    }
+}
